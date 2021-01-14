@@ -27,20 +27,20 @@
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
-                        <a href="#">
-                            <img src="/static/images/icon/logo-white.png" alt="CoolAdmin" />
+                        <a href="/">
+                            <img src="/static/images/icon/custom-logo.png" alt="custom-logo" />
                         </a>
                     </div>
                     <div class="header__navbar">
                         <ul class="list-unstyled">
                             <li class="has-sub">
-                                <a href="#">
-                                    <i class="fas fa-tachometer-alt"></i>Dashboard
+                                <a href="/">
+                                    <i class="fas fa-home"></i>Home
                                     <span class="bot-line"></span>
                                 </a>
-                                <ul class="header3-sub-list list-unstyled">
+                                <!-- <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        <a href="index.html">Dashboard 1</a>
+                                        <a href="/home/">Main Home</a>
                                     </li>
                                     <li>
                                         <a href="index2.html">Dashboard 2</a>
@@ -51,35 +51,52 @@
                                     <li>
                                         <a href="index4.html">Dashboard 4</a>
                                     </li>
+                                </ul> -->
+                            </li>
+                            <li class="has-sub">
+                                <a href="#">
+                                    <i class="fas fa-bar-chart-o"></i>
+                                    <span class="bot-line"></span>Information</a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="/accyear/">연도별 대상사고 정보</a>
+                                    </li>
+                                    <li>
+                                        <a href="/acctype/">구별 대상사고 정보</a>
+                                    </li>
+                                    <li>
+                                        <a href="/accranking/">대상사고별 빈도 비교</a>
+                                    </li>
                                 </ul>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="#">
-                                    <i class="fas fa-shopping-basket"></i>
-                                    <span class="bot-line"></span>eCommerce</a>
-                            </li>
-                            <li>
-                                <a href="table.html">
-                                    <i class="fas fa-trophy"></i>
+                                    <i class="fas fa-truck"></i>
                                     <span class="bot-line"></span>Features</a>
-                            </li>
+                            </li> -->
                             <li class="has-sub">
                                 <a href="#">
                                     <i class="fas fa-copy"></i>
                                     <span class="bot-line"></span>Pages</a>
                                 <ul class="header3-sub-list list-unstyled">
+                                    {% if user.is_active %}
                                     <li>
-                                        <a href="login.html">Login</a>
+                                        <a href="/accounts/logout/">Logout</a>
                                     </li>
                                     <li>
-                                        <a href="register.html">Register</a>
+                                        <a href="/accounts/password_change/">Change Password</a>
+                                    </li>
+                                    {% else%}
+                                    <li>
+                                        <a href="/accounts/login/">Login</a>
                                     </li>
                                     <li>
-                                        <a href="forget-pass.html">Forget Password</a>
+                                        <a href="{% url 'register' %}">Register</a>
                                     </li>
+                                    {% endif %}
                                 </ul>
                             </li>
-                            <li class="has-sub">
+                            <!-- <li class="has-sub">
                                 <a href="#">
                                     <i class="fas fa-desktop"></i>
                                     <span class="bot-line"></span>UI Elements</a>
@@ -118,11 +135,11 @@
                                         <a href="typo.html">Typography</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <div class="header__tool">
-                        <div class="header-button-item has-noti js-item-menu">
+                        <!-- <div class="header-button-item has-noti js-item-menu">
                             <i class="zmdi zmdi-notifications"></i>
                             <div class="notifi-dropdown notifi-dropdown--no-bor js-dropdown">
                                 <div class="notifi__title">
@@ -196,47 +213,80 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
+                                {% if user.is_active %}
                                 <div class="image">
-                                    <img src="/static/images/icon/avatar-01.jpg" alt="John Doe" />
+                                    <img src="/static/images/icon/avatar-07.png" alt="login image" />
                                 </div>
                                 <div class="content">
-                                    <a class="js-acc-btn" href="#">SSAC</a>
+                                    <a class="js-acc-btn" href="#">{{ user.get_username }}</a>
                                 </div>
+                                {% else %}
+                                <div class="image">
+                                    <img src="/static/images/icon/avatar-08.png" alt="out image" />
+                                </div>
+                                <div class="content">
+                                    <a class="js-acc-btn" href="#">Anonymous</a>
+                                </div>
+                                {% endif %}
                                 <div class="account-dropdown js-dropdown">
                                     <div class="info clearfix">
+                                        {% if user.is_active %}
                                         <div class="image">
                                             <a href="#">
-                                                <img src="/static/images/icon/avatar-01.jpg" alt="John Doe" />
+                                                <img src="/static/images/icon/avatar-07.png" alt="login image" />
                                             </a>
                                         </div>
                                         <div class="content">
                                             <h5 class="name">
-                                                <a href="#">SSAC</a>
+                                                <a href="#">{{ user.get_username}}</a>
                                             </h5>
-                                            <span class="email">ssac@example.com</span>
+                                            <span class="email">{{ user.get_username}}@example.com</span>
                                         </div>
+                                        {% else %}
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="/static/images/icon/avatar-08.png" alt="logout image" />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <h5 class="name">
+                                                <a href="#">Anonymous</a>
+                                            </h5>
+                                            <span class="email">로그인 되지 않은 상태입니다.</span>
+                                        </div>
+                                        {% endif %}
+                                        <!-- </div> -->
                                     </div>
+                                    {% if user.is_active %}
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
                                             <a href="#">
                                                 <i class="zmdi zmdi-account"></i>Account</a>
                                         </div>
                                         <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Setting</a>
+                                            <a href="/accounts/password_change/">
+                                                <i class="zmdi zmdi-settings"></i>Change Password</a>
                                         </div>
                                         <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                            <a href="/accounts/logout/">
+                                                <i class="zmdi zmdi-account"></i>Logout</a>
                                         </div>
                                     </div>
-                                    <div class="account-dropdown__footer">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-power"></i>Logout</a>
+                                    {% else %}
+                                    <div class="account-dropdown__body">
+                                        <div class="account-dropdown__item">
+                                            <a href="{% url 'register' %}">
+                                                <i class="zmdi zmdi-account"></i>Register</a>
+                                        </div>                                    
+                                        <div class="account-dropdown__item">
+                                            <a href="/accounts/login/">
+                                                <i class="zmdi zmdi-power"></i>Login</a>
+                                        </div>
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -490,7 +540,7 @@
             <!-- BREADCRUMB-->
             <section class="au-breadcrumb2">
                 <div class="container">
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-12">
                             <div class="au-breadcrumb-content">
                                 <div class="au-breadcrumb-left">
@@ -513,7 +563,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </section>
             <!-- END BREADCRUMB-->

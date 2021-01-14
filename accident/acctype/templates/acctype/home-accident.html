@@ -1,0 +1,593 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    <title>Accident-Type Home</title>
+{% endblock page_title %}
+
+{% block main_content %}
+<!-- 상단 제목 : 서울시 최근 5년간 교통사고 추이 -->
+    <section class="welcome p-t-10"> 
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="title-4"> 서울시 구별 대상사고 정보
+                        <span></span>
+                    </h3>
+                    <hr class="line-seprate">
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- END 상단 제목-->
+
+
+<!-- Select box -->
+    <br />
+
+    <section class="welcome p-t-10">
+        <div class="container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title-5 m-b-35">사고 종류에 따른 발생 수 · 사망자 수 · 부상자 수</h3>
+                    </div>
+                </div>
+
+            <div class="table-data__tool">
+                <div class="table-data__tool-left">
+                    <div class="rs-select2--light rs-select2--sm">
+                        <select class="js-select2" name="selectyear" id="select_year">
+                            <option selected="selected">Year</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+
+                    <div class="rs-select2--light rs-select2--md">
+                        <select class="js-select2" name="selectlocal"  id="select_region">
+                            <option selected="selected">Region</option>
+                            <option value="강남구">강남구</option> 
+                            <option value="강동구">강동구</option>
+                            <option value="강북구">강북구</option> 
+                            <option value="강서구">강서구</option>
+                            <option value="관악구">관악구</option>
+                            <option value="광진구">광진구</option>
+                            <option value="구로구">구로구</option>
+                            <option value="금천구">금천구</option>
+                            <option value="노원구">노원구</option>
+                            <option value="도봉구">도봉구</option>
+                            <option value="동대문구">동대문구</option>
+                            <option value="동작구">동작구</option>
+                            <option value="마포구">마포구</option>
+                            <option value="서대문구">서대문구</option>
+                            <option value="서초구">서초구</option>
+                            <option value="성동구">성동구</option>
+                            <option value="성북구">성북구</option>
+                            <option value="송파구">송파구</option>
+                            <option value="양천구">양천구</option>
+                            <option value="영등포구">영등포구</option>
+                            <option value="용산구">용산구</option>
+                            <option value="은평구">은평구</option>
+                            <option value="종로구">종로구</option>
+                            <option value="중구">중구</option>
+                            <option value="중랑구">중랑구</option>                                
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+                    <button class="au-btn-filter" id="btn_filter">
+                        <i class="zmdi zmdi-filter-list"></i>filters</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- End Select box -->
+
+
+<!-- 사고 발생 조회 -->
+    <section class="search_table">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+
+                <!-- 필터 결과 목록 -->
+                        <div class="au-card m-b-30">
+                            <h3 class="title-3 m-b-30">사고 발생 수</h3>
+                            <div class="table-responsive m-b-30">
+                                <table id="acctype_table" class="table table-borderless table-striped table-earning">
+                                    <thead>
+                                        <tr>
+                                            <th>사고명</th>
+                                            <th>사고발생 수(건)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>                                       
+                </div>
+                <!-- End 필터 결과 목록 -->
+
+                <!-- 필터 결과 그래프 -->
+                <div class="col-lg-6">
+                    <div class="au-card m-b-30">
+                        <div class="au-card-inner">
+                            <h3 class="title-3 m-b-30">Bar Chart</h3>
+                            <div class="chart-wrap">
+                                <canvas id="acc-count-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End 필터 결과 그래프 -->
+            </div>
+        </div>
+    </section>
+
+<!-- End 사건 발생 조회 -->
+
+
+
+<!-- 사망자 수 조회  -->
+
+    <section class="search_table">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    
+                    <!-- 필터 결과 목록 -->
+                        <div class="au-card m-b-30">
+                            <h3 class="title-3 m-b-30">사망자 수</h3>
+                            <div class="table-responsive m-b-30">
+                                <table id="acctype_table2" class="table table-borderless table-striped table-earning">
+                                    <thead>
+                                        <tr>
+                                            <th>사고명</th>
+                                            <th>사망자 수(명)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>                                       
+                </div>
+                <!-- End 필터 결과 목록 -->
+
+                <!-- 필터 결과 그래프 -->
+                <div class="col-lg-6">
+                    <div class="au-card m-b-30">
+                        <div class="au-card-inner">
+                            <h3 class="title-3 m-b-30">Bar Chart</h3>
+                            <div class="chart-wrap">
+                                <canvas id="death-count-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End 필터 결과 그래프 -->
+                <!-- </div> --> 
+            </div>
+        </div>
+    </section>
+
+<!-- End 사망자 수 조회 -->
+
+
+<!-- 부상자 수 조회  -->
+
+    <section class="search_table">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+
+                <!-- 필터 결과 목록 -->                
+                        <div class="au-card m-b-30">
+                            <h3 class="title-3 m-b-30">부상자 수</h3>
+                            <div class="table-responsive m-b-30">
+                                <table id="acctype_table3" class="table table-borderless table-striped table-earning">
+                                    <thead>
+                                        <tr>
+                                            <th>사고명</th>
+                                            <th>부상자 수(명)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>                                       
+                </div>
+                <!-- End 필터 결과 목록 -->
+
+                <!-- 필터 결과 그래프 -->
+                <div class="col-lg-6">
+                    <div class="au-card m-b-30">
+                        <div class="au-card-inner">
+                            <h3 class="title-3 m-b-30">Bar Chart</h3>
+                            <div class="chart-wrap">
+                                <canvas id="injury-count-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End 필터 결과 그래프 -->
+
+            </div>
+        </div>
+    </section>
+
+<!-- End 부상자 수 조회 -->
+
+{% endblock main_content %}
+
+
+{% block custom_js %}
+
+<script type="text/javascript">
+
+$(function(){
+
+// 사건별 발생횟수
+    list_td_names = ['acc_name','acc_count'];
+    list_tr_html_str = `<tr>
+                        <td></td>
+                        <td></td>
+                    </tr>`;
+
+    // 버튼을 누를 때 실행하도록 변경되었으므로 버튼의 클릭 이벤트에 연결
+    $('#btn_filter').on('click', function(event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        // 사용자가 선택한 값을 읽음
+        var year = $('#select_year').val();
+        var region = $('#select_region').val();
+
+        if (!year || !region) {
+            alert('연도와 지역구를 선택하세요.');
+            return;   
+        }
+
+        $.ajax({
+            "url":"/acctype/acccount/" + year + "/" + region, // 요청 경로에 읽은 데이터를 적용
+            "method":"GET",
+            "dataType":"json",
+            "success":function(data, status, xhr){
+
+                $('#acctype_table tbody').empty()
+
+                for (var idx=0; idx < data.length; idx++){
+                    var tr = $(list_tr_html_str);
+                    tr.attr('data-year', data[idx].acc_name);
+                    tr.attr('data-local', data[idx].acc_count)
+                    var tds = tr.find('td');
+                    tds.each(function(i,td){
+                        $(td).text(data[idx][list_td_names[i]])
+                    });
+                    $('#acctype_table tbody').append(tr);
+
+                    show_chart(data);
+                  
+                }
+            },
+            "error":function(xhr, status, err){
+                alert(err);
+            }
+        })
+    });
+
+    // bar chart로 표현
+    function show_chart(data){
+        var labels = []
+        var acccount_list=[]
+
+        for(var i=0; i < data.length; i++){
+            labels.push(data[i].acc_name);
+            acccount_list.push(data[i]['acc_count']);
+        }
+        show_acccount_bar_chart(labels, [acccount_list]);
+    }
+
+    var acccount_bar_chart = null;
+    function show_acccount_bar_chart(labels, datasets){
+        var ctx = $('#acc-count-chart');
+        if (ctx){
+            ctx.height = 200;
+
+            if (acccount_bar_chart){
+                acccount_bar_chart.destroy();
+            }
+            
+             acccount_bar_chart= new Chart(ctx,{
+                type: 'bar',
+                defaultFontFamily: 'Poppins',
+                data: {
+                labels: labels,  //x축 연도 데이터
+                datasets: [
+                    {
+                    label: "Number Of Traffic Accidents",
+                    data: datasets[0],
+                    borderColor: "rgba(255, 119, 101, 0.9)",
+                    borderWidth: "0",
+                    backgroundColor: "rgba(255, 119, 101, 0.5)",
+                    fontFamily: "Poppins"
+                    },
+                ]
+                },
+                options: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                    fontFamily: 'Poppins'
+                    }
+
+                },
+                scales: {
+                    xAxes: [{
+                    ticks: {
+                        fontFamily: "Poppins"
+                    }
+                    }],
+                    yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        fontFamily: "Poppins"
+                    }
+                    }]
+                }
+                }
+
+            });
+        }
+    }
+
+
+// 사망자 수
+    list_td_names2 = ['acc_name','death_count'];
+    list_tr_html_str2 = `<tr>
+                        <td></td>
+                        <td></td>
+                    </tr>`;
+
+    // 버튼을 누를 때 실행하도록 변경되었으므로 버튼의 클릭 이벤트에 연결
+    $('#btn_filter').on('click', function(event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        // 사용자가 선택한 값을 읽음
+        var year = $('#select_year').val();
+        var region = $('#select_region').val();
+
+        if (!year || !region) {
+            alert('연도와 지역구를 선택하세요.');
+            return;   
+        }
+
+        $.ajax({
+            "url":"/acctype/deathcount/" + year + "/" + region, // 요청 경로에 읽은 데이터를 적용
+            "method":"GET",
+            "dataType":"json",
+            "success":function(data, status, xhr){
+
+                $('#acctype_table2 tbody').empty()
+
+                for (var idx=0; idx < data.length; idx++){
+                    var tr = $(list_tr_html_str2);
+                    tr.attr('data-year2', data[idx].acc_name);
+                    tr.attr('data-local2', data[idx].death_count)
+                    var tds = tr.find('td');
+                    tds.each(function(i,td){
+                        $(td).text(data[idx][list_td_names2[i]])
+                    });
+                    $('#acctype_table2 tbody').append(tr);
+
+                    show_chart2(data);
+                  
+                }
+            },
+            "error":function(xhr, status, err){
+                alert(err);
+            }
+        })
+    });
+
+    // bar chart로 표현
+    function show_chart2(data){
+        var labels = []
+        var deathcount_list=[]
+
+        for(var i=0; i < data.length; i++){
+            labels.push(data[i].acc_name);
+            deathcount_list.push(data[i]['death_count']);
+        }
+        show_deathcount_bar_chart(labels, [deathcount_list]);
+    }
+
+    var deathcount_bar_chart = null;
+    function show_deathcount_bar_chart(labels, datasets){
+        var ctx = $('#death-count-chart');
+        if (ctx){
+            ctx.height = 200;
+
+            if (deathcount_bar_chart){
+                deathcount_bar_chart.destroy();
+            }
+            
+             deathcount_bar_chart= new Chart(ctx,{
+                type: 'bar',
+                defaultFontFamily: 'Poppins',
+                data: {
+                labels: labels,  //x축 연도 데이터
+                datasets: [
+                    {
+                    label: "Number Of Deaths",
+                    data: datasets[0],
+                    borderColor: "rgba(196, 234, 76, 0.9)",
+                    borderWidth: "0",
+                    backgroundColor: "rgba(196, 234, 76, 0.5)",
+                    fontFamily: "Poppins"
+                    },
+                ]
+                },
+                options: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                    fontFamily: 'Poppins'
+                    }
+
+                },
+                scales: {
+                    xAxes: [{
+                    ticks: {
+                        fontFamily: "Poppins"
+                    }
+                    }],
+                    yAxes: [{
+                    ticks: {
+                       // min:200000,
+                        beginAtZero: true,
+                        fontFamily: "Poppins"
+                    }
+                    }]
+                }
+                }
+
+            });
+        }
+    }
+
+
+// 부상자 수
+    list_td_names3 = ['acc_name','injury_count'];
+    list_tr_html_str3 = `<tr>
+                        <td></td>
+                        <td></td>
+                    </tr>`;
+
+    // 버튼을 누를 때 실행하도록 변경되었으므로 버튼의 클릭 이벤트에 연결
+    $('#btn_filter').on('click', function(event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        // 사용자가 선택한 값을 읽음
+        var year = $('#select_year').val();
+        var region = $('#select_region').val();
+
+        if (!year || !region) {
+            alert('연도와 지역구를 선택하세요.');
+            return;   
+        }
+
+        $.ajax({
+            "url":"/acctype/injurycount/" + year + "/" + region, // 요청 경로에 읽은 데이터를 적용
+            "method":"GET",
+            "dataType":"json",
+            "success":function(data, status, xhr){
+
+                $('#acctype_table3 tbody').empty()
+
+                for (var idx=0; idx < data.length; idx++){
+                    var tr = $(list_tr_html_str3);
+                    tr.attr('data-year3', data[idx].acc_name);
+                    tr.attr('data-local3', data[idx].injury_count)
+                    var tds = tr.find('td');
+                    tds.each(function(i,td){
+                        $(td).text(data[idx][list_td_names3[i]])
+                    });
+                    $('#acctype_table3 tbody').append(tr);
+
+                    show_chart3(data);
+                  
+                }
+            },
+            "error":function(xhr, status, err){
+                alert(err);
+            }
+        })
+    });
+
+    // bar chart로 표현
+    function show_chart3(data){
+        var labels = []
+        var injurycount_list=[]
+
+        for(var i=0; i < data.length; i++){
+            labels.push(data[i].acc_name);
+            injurycount_list.push(data[i]['injury_count']);
+        }
+        show_injurycount_bar_chart(labels, [injurycount_list]);
+    }
+
+    var injurycount_bar_chart = null;
+    function show_injurycount_bar_chart(labels, datasets){
+        var ctx = $('#injury-count-chart');
+        if (ctx){
+            ctx.height = 200;
+
+            if (injurycount_bar_chart){
+                injurycount_bar_chart.destroy();
+            }
+            
+             injurycount_bar_chart= new Chart(ctx,{
+                type: 'bar',
+                defaultFontFamily: 'Poppins',
+                data: {
+                labels: labels,  //x축 연도 데이터
+                datasets: [
+                    {
+                    label: "Number Of Injuries ",
+                    data: datasets[0],
+                    borderColor: "rgba(102, 144, 255, 0.9)",
+                    borderWidth: "0",
+                    backgroundColor: "rgba(102, 144, 255, 0.5)",
+                    fontFamily: "Poppins"
+                    },
+                ]
+                },
+                options: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                    fontFamily: 'Poppins'
+                    }
+
+                },
+                scales: {
+                    xAxes: [{
+                    ticks: {
+                        fontFamily: "Poppins"
+                    }
+                    }],
+                    yAxes: [{
+                    ticks: {
+                       // min:200000,
+                        beginAtZero: true,
+                        fontFamily: "Poppins"
+                    }
+                    }]
+                }
+                }
+
+            });
+        }
+    }
+
+
+
+});
+</script>
+
+{% endblock custom_js %}
