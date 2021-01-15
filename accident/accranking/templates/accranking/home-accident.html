@@ -28,7 +28,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="title-5 m-b-35">사고 종류에 따른 발생 수 · 사망자 수 · 부상자 수 구 순위</h3>
+                        <h3 class="title-5 m-b-35">사고별 발생 수 · 사망자 수 · 부상자 수에 따른 구 순위</h3>
                     </div>
                 </div>
 
@@ -270,7 +270,6 @@ $(function(){
     }
 
     var ranking_bar_chart = null;
-
     function show_ranking_bar_chart(labels, datasets){
         var ctx = $('#ranking-chart');
         if (ctx){
@@ -287,7 +286,7 @@ $(function(){
                 labels: labels,  
                 datasets: [
                     {
-                    label: "Number Of Traffic Accidents",
+                    label: "Number Of Accidents",
                     data: datasets[0],
                     borderColor: "rgba(255, 119, 101, 0.9)",
                     borderWidth: "0",
@@ -384,7 +383,6 @@ $(function(){
     }
 
     var ranking_bar_chart2 = null;
-
     function show_ranking_bar_chart2(labels, datasets){
         var ctx = $('#ranking-chart2');
         if (ctx){
@@ -401,7 +399,7 @@ $(function(){
                 labels: labels,  
                 datasets: [
                     {
-                    label: "Number Of Death",
+                    label: "Number Of Deaths",
                     data: datasets[0],
                     borderColor: "rgba(196, 234, 76, 0.9)",
                     borderWidth: "0",
@@ -498,7 +496,6 @@ $(function(){
     }
 
     var ranking_bar_chart3 = null;
-
     function show_ranking_bar_chart3(labels, datasets){
         var ctx = $('#ranking-chart3');
         if (ctx){
@@ -515,7 +512,7 @@ $(function(){
                 labels: labels,  
                 datasets: [
                     {
-                    label: "Number Of Injury",
+                    label: "Number Of Injuries",
                     data: datasets[0],
                     borderColor: "rgba(102, 144, 255, 0.9)",
                     borderWidth: "0",

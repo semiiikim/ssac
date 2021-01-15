@@ -20,8 +20,7 @@
     </section>
 <!-- END 상단 제목-->
 
-
-<!-- Select box -->
+<!-- Select box1 -->
     <br />
 
     <section class="welcome p-t-10">
@@ -29,7 +28,131 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="title-5 m-b-35">사고 종류에 따른 발생 수 · 사망자 수 · 부상자 수</h3>
+                        <h3 class="title-5 m-b-35">사고별 · 구별 최근 5년간 추이</h3>
+                    </div>
+                </div>
+
+            <div class="table-data__tool">
+                <div class="table-data__tool-left">
+                    <div class="rs-select2--light rs-select2--md">
+                        <select class="js-select2" name="selectlocal"  id="select_region_extra">
+                            <option selected="selected">Region</option>
+                            <!-- <option value="서울특별시">서울시 전체</option>  -->
+                            <option value="강남구">강남구</option> 
+                            <option value="강동구">강동구</option>
+                            <option value="강북구">강북구</option> 
+                            <option value="강서구">강서구</option>
+                            <option value="관악구">관악구</option>
+                            <option value="광진구">광진구</option>
+                            <option value="구로구">구로구</option>
+                            <option value="금천구">금천구</option>
+                            <option value="노원구">노원구</option>
+                            <option value="도봉구">도봉구</option>
+                            <option value="동대문구">동대문구</option>
+                            <option value="동작구">동작구</option>
+                            <option value="마포구">마포구</option>
+                            <option value="서대문구">서대문구</option>
+                            <option value="서초구">서초구</option>
+                            <option value="성동구">성동구</option>
+                            <option value="성북구">성북구</option>
+                            <option value="송파구">송파구</option>
+                            <option value="양천구">양천구</option>
+                            <option value="영등포구">영등포구</option>
+                            <option value="용산구">용산구</option>
+                            <option value="은평구">은평구</option>
+                            <option value="종로구">종로구</option>
+                            <option value="중구">중구</option>
+                            <option value="중랑구">중랑구</option>                                
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+
+                    <div class="rs-select2--light rs-select2--md">
+                        <select class="js-select2" name="selectyear" id="select_type_extra">
+                            <option selected="selected">type</option>
+                            <option value="어린이사고">어린이사고</option>
+                            <option value="고령자사고">고령자사고</option>
+                            <option value="자전거사고">자전거사고</option>
+                            <option value="개인이동수단(PM)사고">개인이동수단(PM)사고</option>
+                            <option value="뺑소니사고">뺑소니사고</option>
+                            <option value="무면허사고">무면허사고</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+
+                    <button class="au-btn-filter" id="btn_filter_extra">
+                        <i class="zmdi zmdi-filter-list"></i>filters</button>
+                </div>
+            </div>
+        </div>
+    </section> 
+<!-- End Select box1 -->
+
+<!-- 5년간 추이 차트-->
+    <section class="statistic-chart">
+        <div class="container">            
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <!-- CHART-->
+                    <div class="statistic-chart-1">
+                        <h3 class="title-3 m-b-30">사고발생 수(건)</h3>
+                        <div class="chart-wrap">
+                            <canvas id="accident-line-chart"></canvas>
+                        </div>
+                        <div class="statistic-chart-1-note">
+                            <span class="big"></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <!-- END CHART-->
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <!-- CHART-->
+                    <div class="statistic-chart-1">
+                        <h3 class="title-3 m-b-30">사망자 수(명)</h3>
+                        <div class="chart-wrap">
+                            <canvas id="death-line-chart"></canvas>
+                        </div>
+                        <div class="statistic-chart-1-note">
+                            <span class="big"></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <!-- END CHART-->
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <!-- CHART-->
+                    <div class="statistic-chart-1">
+                        <h3 class="title-3 m-b-30">부상자 수(명)</h3>
+                        <div class="chart-wrap">
+                            <canvas id="injury-line-chart"></canvas>
+                        </div>
+                        <div class="statistic-chart-1-note">
+                            <span class="big"></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <!-- END CHART-->
+                </div>                        
+            </div>
+        </div>
+    </section>
+<!-- end 5년간 추이-->
+
+
+
+
+<!-- Select box2 -->
+    <br />
+
+    <section class="welcome p-t-10">
+        <div class="container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title-5 m-b-35">연도별 · 구별 정보</h3>
                     </div>
                 </div>
 
@@ -83,9 +206,8 @@
                 </div>
             </div>
         </div>
-    </section>
-
-<!-- End Select box -->
+    </section> 
+<!-- End Select box2 -->
 
 
 <!-- 사고 발생 조회 -->
@@ -129,13 +251,11 @@
             </div>
         </div>
     </section>
-
 <!-- End 사건 발생 조회 -->
 
 
 
 <!-- 사망자 수 조회  -->
-
     <section class="search_table">
         <div class="container">
             <div class="row">
@@ -177,12 +297,10 @@
             </div>
         </div>
     </section>
-
 <!-- End 사망자 수 조회 -->
 
 
 <!-- 부상자 수 조회  -->
-
     <section class="search_table">
         <div class="container">
             <div class="row">
@@ -224,7 +342,6 @@
             </div>
         </div>
     </section>
-
 <!-- End 부상자 수 조회 -->
 
 {% endblock main_content %}
@@ -235,6 +352,326 @@
 <script type="text/javascript">
 
 $(function(){
+
+//5년간 추이
+    $('#btn_filter_extra').on('click', function(event){
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        var type_extra = $('#select_type_extra').val();
+        var region_extra = $('#select_region_extra').val();
+
+        if(!type_extra || !region_extra){
+            alert('사고 종류와 구를 선택하세요.');
+            return;
+        }
+
+        $.ajax({
+            "url":"/acctype/trend/" + type_extra + "/" + region_extra,
+            "method":"GET",
+            "dataType":"json",
+            "success": function(data, status, xhr){
+                show_line_chart(data);
+            },
+            "error":function(xhr, status, err){
+                alert(err);
+            }
+        })
+    });
+
+    function show_line_chart(data){
+        var labels = []     //연도
+        var count_trend = []    //사건수
+        var death_trend = []    //사망자수
+        var injury_trend = []   //부상자수
+
+        for(var i=0; i < data.length; i++){
+            labels.push(data[i].year);
+            count_trend.push(data[i].acc_count);
+            death_trend.push(data[i].death_count);
+            injury_trend.push(data[i].injury_count);
+        }
+        show_count_trend_chart(labels, [count_trend]);
+        show_death_trend_chart(labels, [death_trend]);
+        show_injury_trend_chart(labels, [injury_trend]);
+    }
+
+    var count_trend_chart = null;
+    function show_count_trend_chart(labels, datasets){
+        var ctx = $('#accident-line-chart');
+        if (ctx) {
+            ctx.height = 300;
+
+            if (count_trend_chart){
+                count_trend_chart.destroy();
+            }
+
+            count_trend_chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                labels: labels, // x축 데이터
+                type: 'line',
+                defaultFontFamily: 'Poppins',
+                datasets: [{
+                    label: "Number of Accidents",
+                    data: datasets[0], // y축 데이터
+                    backgroundColor: 'transparent',
+                    borderColor: 'rgba(220,53,69,0.75)',
+                    borderWidth: 3,
+                    pointStyle: 'circle',
+                    pointRadius: 5,
+                    pointBorderColor: 'transparent',
+                    pointBackgroundColor: 'rgba(220,53,69,0.75)',
+                }]
+                },
+                options: {
+                responsive: true,
+                tooltips: {
+                    mode: 'index',
+                    titleFontSize: 12,
+                    titleFontColor: '#000',
+                    bodyFontColor: '#000',
+                    backgroundColor: '#fff',
+                    titleFontFamily: 'Poppins',
+                    bodyFontFamily: 'Poppins',
+                    cornerRadius: 3,
+                    intersect: false,
+                },
+                legend: {
+                    display: false,
+                    labels: {
+                    usePointStyle: true,
+                    fontFamily: 'Poppins',
+                    },
+                },
+                scales: {
+                    xAxes: [{
+                    display: true,
+                    gridLines: {
+                        display: true,
+                        drawBorder: true
+                    },
+                    // scaleLabel: {
+                    //     display: false,
+                    //     labelString: 'Month'
+                    // },
+                    ticks: {
+                        fontFamily: "Poppins"
+                    }
+                    }],
+                    yAxes: [{
+                    display: true,
+                    gridLines: {
+                        display: true,
+                        drawBorder: true
+                    },
+                    // scaleLabel: {
+                    //     display: true,
+                    //     labelString: 'Number of Accident',
+                    //     fontFamily: "Poppins"
+
+                    // },
+                    ticks: {
+                        fontFamily: "Poppins",
+                        min: 0,
+                    }
+                    }]
+                },
+                title: {
+                    display: false,
+                    text: 'Normal Legend'
+                }
+                }
+
+            });
+        }
+    }
+
+    var death_trend_chart = null;
+    function show_death_trend_chart(labels, datasets){
+        var ctx = $('#death-line-chart');
+        if (ctx) {
+        ctx.height = 200;
+
+            if (death_trend_chart){
+                death_trend_chart.destroy();
+            }
+
+            death_trend_chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                labels: labels, // x축 데이터
+                type: 'line',
+                defaultFontFamily: 'Poppins',
+                datasets: [{
+                    label: "Number of Deaths",
+                    data: datasets[0], // y축 데이터
+                    backgroundColor: 'transparent',
+                    borderColor: 'rgba(220,53,69,0.75)',
+                    borderWidth: 3,
+                    pointStyle: 'circle',
+                    pointRadius: 5,
+                    pointBorderColor: 'transparent',
+                    pointBackgroundColor: 'rgba(220,53,69,0.75)',
+                }]
+                },
+                options: {
+                responsive: true,
+                tooltips: {
+                    mode: 'index',
+                    titleFontSize: 12,
+                    titleFontColor: '#000',
+                    bodyFontColor: '#000',
+                    backgroundColor: '#fff',
+                    titleFontFamily: 'Poppins',
+                    bodyFontFamily: 'Poppins',
+                    cornerRadius: 3,
+                    intersect: false,
+                },
+                legend: {
+                    display: false,
+                    labels: {
+                    usePointStyle: true,
+                    fontFamily: 'Poppins',
+                    },
+                },
+                scales: {
+                    xAxes: [{
+                    display: true,
+                    gridLines: {
+                        display: true,
+                        drawBorder: true
+                    },
+                    // scaleLabel: {
+                    //     display: false,
+                    //     labelString: 'Month'
+                    // },
+                    ticks: {
+                        fontFamily: "Poppins"
+                    }
+                    }],
+                    yAxes: [{
+                    display: true,
+                    gridLines: {
+                        display: true,
+                        drawBorder: true
+                    },
+                    // scaleLabel: {
+                    //     display: true,
+                    //     labelString: 'Number of Death',
+                    //     fontFamily: "Poppins"
+
+                    // },
+                    ticks: {
+                        fontFamily: "Poppins",
+                        min: 0,
+                    }
+                    }]
+                },
+                title: {
+                    display: false,
+                    text: 'Normal Legend'
+                }
+                }
+
+            });
+        }
+    }
+
+
+    var injury_trend_chart = null;
+    function show_injury_trend_chart(labels, datasets){
+        var ctx = $('#injury-line-chart');
+        if (ctx) {
+        ctx.height = 200;
+
+            if (injury_trend_chart){
+                injury_trend_chart.destroy();
+            }
+
+            injury_trend_chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                labels: labels, // x축 데이터
+                type: 'line',
+                defaultFontFamily: 'Poppins',
+                datasets: [{
+                    label: "Number of Injuries",
+                    data: datasets[0], // y축 데이터
+                    backgroundColor: 'transparent',
+                    borderColor: 'rgba(220,53,69,0.75)',
+                    borderWidth: 3,
+                    pointStyle: 'circle',
+                    pointRadius: 5,
+                    pointBorderColor: 'transparent',
+                    pointBackgroundColor: 'rgba(220,53,69,0.75)',
+                }]
+                },
+                options: {
+                responsive: true,
+                tooltips: {
+                    mode: 'index',
+                    titleFontSize: 12,
+                    titleFontColor: '#000',
+                    bodyFontColor: '#000',
+                    backgroundColor: '#fff',
+                    titleFontFamily: 'Poppins',
+                    bodyFontFamily: 'Poppins',
+                    cornerRadius: 3,
+                    intersect: false,
+                },
+                legend: {
+                    display: false,
+                    labels: {
+                    usePointStyle: true,
+                    fontFamily: 'Poppins',
+                    },
+                },
+                scales: {
+                    xAxes: [{
+                    display: true,
+                    gridLines: {
+                        display: true,
+                        drawBorder: true
+                    },
+                    // scaleLabel: {
+                    //     display: false,
+                    //     labelString: 'Month'
+                    // },
+                    ticks: {
+                        fontFamily: "Poppins"
+                    }
+                    }],
+                    yAxes: [{
+                    display: true,
+                    gridLines: {
+                        display: true,
+                        drawBorder: true
+                    },
+                    // scaleLabel: {
+                    //     display: true,
+                    //     labelString: 'Number of Injury',
+                    //     fontFamily: "Poppins"
+
+                    // },
+                    ticks: {
+                        fontFamily: "Poppins",
+                        min: 0,
+                    }
+                    }]
+                },
+                title: {
+                    display: false,
+                    text: 'Normal Legend'
+                }
+                }
+
+            });
+        }
+    }
+
+
 
 // 사건별 발생횟수
     list_td_names = ['acc_name','acc_count'];
@@ -254,7 +691,7 @@ $(function(){
         var region = $('#select_region').val();
 
         if (!year || !region) {
-            alert('연도와 지역구를 선택하세요.');
+            alert('연도와 구를 선택하세요.');
             return;   
         }
 
@@ -584,7 +1021,6 @@ $(function(){
             });
         }
     }
-
 
 
 });

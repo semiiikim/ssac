@@ -7,6 +7,16 @@ from django.http import HttpResponse
 class HomeView(TemplateView):
     template_name = 'acctype/home-accident.html'
 
+class AccTrendView(View):
+    def get(self, request, key, key2):
+        from .acctype_repository import AcctypeRepository
+        import json
+
+        repository = AcctypeRepository()
+        select_trend = repository.select_acctype_trend(key, key2)
+        json_select_trend = json.dumps(select_trend, ensure_ascii=False)
+        return HttpResponse(json_select_trend, content_type="application/json")
+
 class AccCountView(View):
     def get(self, request, key, key2):
         from .acctype_repository import AcctypeRepository
